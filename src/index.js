@@ -1,28 +1,10 @@
-const handleMainItemClick = (e) => {
-  const classList = e.target.classList
-  const element = e.target
-
-  if (classList.contains('select__current')){
-    if (element.closest('.select').classList.contains('is-active')){
-      element.closest('.select').classList.remove('is-active');
-    } else {
-      element.closest('.select').classList.add('is-active');
-    }
-  }
-}
-
-const handleItemClick = (e) => {
-  const optionValue = e.target.textContent
-  document.querySelector('.select__current').textContent = optionValue;
-  document.querySelector('.select').classList.remove('is-active');
-}
+import { Select } from "./components/select";
 
 
-
-const items = document.querySelectorAll('.select__body .select__item')
-items.forEach(item => {
-  item.addEventListener('click', handleItemClick);
-})
-
-const mainItem = document.querySelector('.select__current')
-mainItem.addEventListener('click', handleMainItemClick);
+const select = new Select(document.querySelector('.select'), [
+  {id: 1, name: 'React'},
+  {id: 2, name: 'Angular'},
+  {id: 3, name: 'Vue'},
+  {id: 4, name: 'Node JS'},
+  {id: 5, name: 'Redux'},
+]);
