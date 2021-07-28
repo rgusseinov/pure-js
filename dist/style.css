@@ -1,5 +1,5 @@
 .select {
-  margin: 0 auto;
+  margin: 50px auto;
   width: 250px;
   position: relative;
 }
@@ -31,6 +31,24 @@
   width: 40px;
 }
 
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.arrow.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.arrow.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
 .select__body {
   position: absolute;
   top: 100%;
@@ -47,6 +65,11 @@
   line-height: 24px;
   padding: 8px;
 }
+
+.select__item.hovered{
+  background-color: #c3c3c3;
+}
+
 
 .select__item:hover {
   background-color: #f2f2f2;

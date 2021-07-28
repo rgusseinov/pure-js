@@ -1,13 +1,14 @@
-const getSelectTemplate = (items, placeholder) => {
-  const text = (placeholder) ? placeholder : 'Please select item';
+const getSelectTemplate = (selectedId, items, placeholder) => {
+  let text = (placeholder) ? placeholder : 'Please select item';
   
   const options = items.map(item => {
-    return `<div class="select__item" data-id="${item.id}"> ${item.name} </div>`;
+    if (item.id === selectedId) text = item.name;
+    return `<div class="select__item ${(item.id === selectedId) ? 'hovered' : ''}" data-type="item" data-id="${item.id}"> ${item.name} </div>`;
   });
 
-  return `<div class="select__header">
-            <span class="select__current"> ${placeholder} </span>
-            <div class="select__icon"> X </div>
+  return `<div class="select__header" data-type="select">
+            <span class="select__current" data-type="select"> ${text} </span>
+            <div class="select__icon"><i class="arrow down"></i></div>
           </div>
           <div class="select__body">${options.join('')}</div>`;
 }
@@ -17,46 +18,77 @@ export class Select{
   constructor(element, options){
     this.$el = document.querySelector(element)
     this.options = options
-    this.render();
-    this.addEventListeners();
+    this.selectedId = options.selectedId
+    this.#render();
+    this.#addEventListeners();
   }
 
-  render(){
+  #render(){
     const { data, placeholder } = this.options
-    this.$el.innerHTML = getSelectTemplate(data, placeholder);
-    this.$el.querySelector('.select__header').addEventListener('click', this.clickHandlerMain.bind(this));
+    this.$el.innerHTML = getSelectTemplate(this.selectedId, data, placeholder);
   }
 
-  addEventListeners(){
-    const items = this.$el.querySelectorAll('.select__item')
-    items.forEach(item => item.addEventListener('click', this.clickHandler.bind(this)));
-  }
-
-  clickHandlerMain(e){
-    if (this.$el.classList.contains('is-active')){
-      this.close()
-    } else {
-      this.open()
-    }
+  #addEventListeners(){
+    this.clickHandler = this.clickHandler.bind(this)
+    this.$el.addEventListener('click', this.clickHandler); // on select click
   }
 
   clickHandler(e){
-    const { id } = e.target.dataset
-    this.$el.querySelector('.select__current').textContent = e.target.textContent
-    this.close()
+    const { type } = e.target.dataset
+    if (type == 'select'){
+      this.toggle()
+    } else if (type == 'item'){
+
+      const { id } = e.target.dataset
+      this.$el.querySelector('.select__current').textContent = e.target.textContent
+      if (this.selectedId === id){
+        this.selectedId = null;
+      } else {
+        this.selectedId = id;
+      }
+      this.selectItems()
+      this.toggle()
+    }
   }
 
+  selectItems(){
+    const items = this.$el.querySelectorAll('.select__item')
+    items.forEach(item => item.classList.remove('hovered'));
+  
+    if (this.selectedId){
+      const selectedItem = this.$el.querySelector(`.select__item[data-id="${this.selectedId}"]`)
+      selectedItem.classList.add('hovered')
+    }
+  }
+
+  toggle(){
+    this.isOpen ? this.close() : this.open();
+  }
+
+  get isOpen(){
+    return this.$el.classList.contains('is-active')
+  }
+  
   open(){
     this.$el.classList.add('is-active');
+    this.$el.querySelector('i.arrow').classList.remove('down');
+    this.$el.querySelector('i.arrow').classList.add('up');
   }
 
   close(){
     this.$el.classList.remove('is-active');
+    this.$el.querySelector('i.arrow').classList.remove('up');
+    this.$el.querySelector('i.arrow').classList.add('down');
   }
 
   select(id){
     const findItem = this.$el.querySelector(`.select__item[data-id="${id}`)
     this.$el.querySelector('.select__current').textContent = findItem.textContent.trim()
+  }
+
+  destroy(){
+    this.$el.removeEventListener('click', this.clickHandler);
+    this.$el.innerHTML = ''
   }
 
 }
