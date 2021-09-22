@@ -6,17 +6,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Learning native JS</title>
   <style>
-    .wrapper {
-      max-width: 1024px;
-      display: flex;
+
+    .container {
+      max-width: 980px;
       margin: 0 auto;
+    }
+    .wrapper {
+      display: flex;
       background-color: #ffffff;
       box-shadow: 10px 10px 40px -1px rgb(0 0 0 / 23%);
     }
 
     /* Left side */
-    .leftside__container {
-      min-width: 195px;
+    .leftside {
+      width: 35%;
     }
     .leftside__top {
       padding: 20px 0;
@@ -37,7 +40,9 @@
     }
     
     .leftside__content {
-      padding-left: 20px;
+      /* border: 1px solid red; */
+      width: 64%;
+      margin: 0 auto;
     }
 
     .leftside__section {
@@ -48,16 +53,35 @@
     }
 
 
-
     /* Right side */
+    .rightside {
+      width: 60%;
+      padding: 12px 30px;
+    }
+
     .rightside__top {
       padding: 20px 0;
-    } 
+    }
+
+    .footer {
+      /* padding: 20px 0; */
+      background-color: #376193;
+    }
+
     .rightside__content {
-      padding-left: 40px;
       display: flex;
       flex-direction: column;
+      /* max-width: 90%; */
+      /* border: 1px solid green; */
     }
+    .rightside__container {
+      /* border: 1px solid red; */
+      /* width: 69%; */
+      display: flex;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+
     .rightside__summary {
       margin-top: 20px;
     }
@@ -68,13 +92,28 @@
       border-bottom: 1px solid #376193;
       padding: 5px 0;
     }
-
+    .rightside__parts {
+      display: flex;
+      justify-content: space-around;
+    }
+    .footer__sections {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      color: #fff;
+    }
+    .footer__section a {
+      color: #fff;
+      text-decoration: none;
+    }
     
   </style>
 </head>
 <body>
 
-  <div class="wrapper">    
+  <div class="container">
+    <div class="wrapper">
       <div class="leftside">
           <div class="container">        
             <div class="leftside__container">
@@ -139,40 +178,135 @@
           </div>
       </div>
 
-      <div class="rightside">
+      <aside class="rightside">
         <div class="container">
           <div class="rightside__container">
-            <div class="rightside__top"></div>
 
               <div class="rightside__content">
-
-
                 <div class="rightside__summary">
                   <div class="rightside__header">
                     <h2> Summary </h2>
                   </div>
                   <div class="rightside__body">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus maiores similique, nemo alias suscipit assumenda, molestias harum quas deleniti ipsa ipsum consequatur odit laudantium porro velit iste, deserunt et necessitatibus!\\
+                    I'm frontend developer with 2 years of experience builing and maintaining
+                    responsive web projects.
+                    Working with JS, React, Redux, Typescript technologiest.
                   </div>
                 </div>
 
-                <div class="rightside__summary">
+                <div class="rightside__skills">
                   <div class="rightside__header">
-                    <h2> Summary </h2>
+                    <h2> Skill Hightlights </h2>
                   </div>
                   <div class="rightside__body">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus maiores similique, nemo alias suscipit assumenda, molestias harum quas deleniti ipsa ipsum consequatur odit laudantium porro velit iste, deserunt et necessitatibus!\\
+                    <div class="rightside__parts">
+                      <div class="rideside__part">
+                        <ul>
+                          <li>Project management</li>
+                          <li>Strong desicition maker</li>
+                          <li>Troubleshooting</li>
+                        </ul>
+                      </div>
+                      <div class="rideside__part">
+                        <ul>
+                          <li>Professional</li>
+                          <li>Responsibilities</li>
+                          <li>Team player</li>
+                        </ul>
+                      </div>
+                    </div>
                   </div>
                 </div>
-    
+
+                <div class="rightside__experience">
+                  <div class="rightside__header">
+                    <h2> Work Experience </h2>
+                  </div>
+                  <div class="rightside__body">
+                    <div class="rightside__row">
+                      <div class="section">
+                        <strong> Fullstack developer - </strong>  Apr 2013 - till now <br/>
+                        <strong> Globalink Logistics, </strong> Almaty, Kazakhstan <br /><br />
+                        I have more than 10 years of experience in web programming. Here the my latest projects on which i worked and completed successfully. <br>
+                        <ul>
+                          <li> Taking part in the development and providing support of the ERP system  </li>
+                          <li> Development and implementation of HR processes in ERP </li>
+                          <li> Development and implementation of Legal processes (document approval) in ERP </li>
+                          <li> CRM implementation and support for the sales department </li>
+                          <li> Development and implementation of modules for the transportation of personal belongings </li>
+                          <li> PHP API development for a mobile application </li>
+                          <li> Integration of ERP with the system of a partner company via API </li>
+                          <li> Development and support of the company’s website </li>
+                          <li> Development in React, JS, Typescript, Redux, PHP, MySQL </li>
+                        </ul>
+                      </div>
+                      <div class="section">
+                        <strong> Web developer - </strong>  June 2009 - March 2013 <br/>
+                        <strong> GCNTO, </strong> Almaty, Kazakhstan <br /><br />
+                          I have more than 10 years of experience in web programming. Here the my latest projects on which i worked and completed successfully. <br>
+                        <ul>
+                          <li> Development and supporting of education platform for pupils </li>
+                          <li> Creating intranet system for internal usage </li>
+                          <li> Support and development software on Delphi </li>
+                          <li> Manager of “Project Enhancement” department </li>
+                          <li> Creation and technical support of an electronic queue for kindergartens </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="rightside__education">
+                  <div class="rightside__header">
+                    <h2> Education </h2>
+                  </div>
+                  <div class="rightside__body"> Bachelor of information technology, 2009, Almaty, Kazakhstan <br/>
+                    Master’s degree. 2012, Almaty, Kazakhstan 
+                  </div>
+                </div>
+
+                <div class="rightside__certifications">
+                  <div class="rightside__header">
+                    <h2> Certifications </h2>
+                  </div>
+                  <div class="rightside__body">
+                    <p>
+                      During my career i learned a lot of courses related to web development.  <br /> 
+                      Here the recent courses which i finished
+                      <br /> <br />                      
+                      Development on React. Client application architecture On 2020, By online school HTML Academy. <br /><br />                      
+                      Development Excel app on pure JS. On 2020, By online school of Vladilen Minin Link to Git Hub <br /><br />
+                      Development of internet shop on React, Redux. On 2020, free online course on youtube: Link to Git Hub <br /><br />
+                      UX Design Course for Designers. On 2019, By online school of Skillbox. <br /><br />
+                      Basic JS Learning On 2019, free online course on youtube: <br /><br />
+                    </p>
+                  </div>
+                </div>
               </div>
-
+              <!-- <div class="rightside__bottom"></div>          -->
           </div>
         </div>
+        
+      </aside>
+      
+    </div>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__sections">
+          <div class="footer__section">2021</div>
+          <div class="footer__section">
+            <a href="https://github.com/rgusseinov/">Follow me on Github</a>
+          </div>
+          <div class="footer__section">
+            <a href="https://rs.school/js/">
+              <img src="./rs_school_js.svg" width="76px" height="56px"/>
+            </a>
+          </div>          
+        </div>
       </div>
-
-    <div class="footer"></div>
+    </footer>
   </div>
+
 
 </body>
 </html>
