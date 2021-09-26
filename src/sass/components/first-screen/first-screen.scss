@@ -1,0 +1,10 @@
+@import '../../abstract/constants';
+
+.first-screen {
+  background-color: $color-background;
+}
+.first-screen__title {
+  color: #fff;
+  font-size: 40px;
+  line-height: 60px;
+}

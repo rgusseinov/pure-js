@@ -1,0 +1,6 @@
+@import '../abstract/constants';
+.wrapper {
+  max-width: $content-width;
+  margin: 0 auto;
+  display: flex;
+}

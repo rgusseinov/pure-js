@@ -1,1 +1,1 @@
-console.log('Hello native js!!!')
+import './sass/style.sass';

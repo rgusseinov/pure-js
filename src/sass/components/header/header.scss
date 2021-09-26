@@ -1,0 +1,26 @@
+.navigation {
+  display: flex;
+  font-size: 1.3rem;
+}
+
+.navigation__link {
+  list-style: none;
+  padding: 0 25px;
+  cursor: pointer;
+}
+
+.header {
+  background-color: #030303;
+  padding: 20px 0;
+  nav.navigation ul {
+    display: flex;
+    li {
+      padding-left: 20px;
+      list-style-type: none;
+      a {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
+  }
+}
