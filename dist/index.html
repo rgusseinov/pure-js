@@ -4,174 +4,21 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Learning native JS</title>
-  <style>
-    .wrapper {
-      max-width: 1024px;
-      display: flex;
-      margin: 0 auto;
-      background-color: #ffffff;
-      box-shadow: 10px 10px 40px -1px rgb(0 0 0 / 23%);
-    }
-
-    /* Left side */
-    .leftside__container {
-      min-width: 195px;
-    }
-    .leftside__top {
-      padding: 20px 0;
-      background-color: #376193;
-    } 
-    .leftside__label {
-      color: #376193;
-      text-transform: uppercase;
-      font-size: 14px;
-    }
-
-    .leftside__header {
-      color: #376193;
-    }
-    .leftside__header h2 {
-      border-bottom: 1px solid #376193;
-      padding: 5px 0;
-    }
-    
-    .leftside__content {
-      padding-left: 20px;
-    }
-
-    .leftside__section {
-      padding-bottom: 20px;
-    }
-    .section__header {
-      font-weight: bold;
-    }
-
-
-
-    /* Right side */
-    .rightside__top {
-      padding: 20px 0;
-    } 
-    .rightside__content {
-      padding-left: 40px;
-      display: flex;
-      flex-direction: column;
-    }
-    .rightside__summary {
-      margin-top: 20px;
-    }
-    .rightside__header {
-      color: #376193;
-    }
-    .rightside__header h2 {
-      border-bottom: 1px solid #376193;
-      padding: 5px 0;
-    }
-
-    
-  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>File upload </title>
 </head>
 <body>
 
-  <div class="wrapper">    
-      <div class="leftside">
-          <div class="container">        
-            <div class="leftside__container">
-              <div class="leftside__top"></div>
-
-              <div class="leftside__content">
-                <div class="leftside__label">
-                  <h1> Ruslan Gusseinov </h1>
-                </div>
-
-                <div class="leftside__photo">
-                  <img src="./me.png">
-                </div>
-
-                <div class="leftside__contact">
-                  <div class="leftside__header">
-                    <h2>Contact</h2>
-                  </div>
-                  <div class="leftside__body">
-
-                    <div class="leftside__row">
-
-                      <div class="leftside__section">
-                        <div class="section__header"> Address: </div>
-                        <div class="section__body"> Auezov 69, Kazakhstan, Almaty </div>
-                      </div>
-
-                      <div class="leftside__section">
-                        <div class="section__header"> Phone: </div>
-                        <div class="section__body">  +7 (777) 503 5757  </div>
-                      </div>
-
-                      <div class="leftside__section">
-                        <div class="section__header"> Email: </div>
-                        <div class="section__body">  r.gusseinov@mail.ru   </div>
-                      </div>
-
-                    </div>
-
-                  </div>
-                </div>
-                
-                <div class="leftside__languages">
-                  <div class="leftside__header">
-                    <h2>Languages</h2>
-                  </div>
-                  <div class="leftside__body">
-                    <div class="leftside__row">
-                      <div class="leftside__1">
-                        English - B1
-                      </div>
-                      <div class="leftside__1">
-                        Russian - L1
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-
-          </div>
-      </div>
-
-      <div class="rightside">
-        <div class="container">
-          <div class="rightside__container">
-            <div class="rightside__top"></div>
-
-              <div class="rightside__content">
-
-
-                <div class="rightside__summary">
-                  <div class="rightside__header">
-                    <h2> Summary </h2>
-                  </div>
-                  <div class="rightside__body">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus maiores similique, nemo alias suscipit assumenda, molestias harum quas deleniti ipsa ipsum consequatur odit laudantium porro velit iste, deserunt et necessitatibus!\\
-                  </div>
-                </div>
-
-                <div class="rightside__summary">
-                  <div class="rightside__header">
-                    <h2> Summary </h2>
-                  </div>
-                  <div class="rightside__body">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Natus maiores similique, nemo alias suscipit assumenda, molestias harum quas deleniti ipsa ipsum consequatur odit laudantium porro velit iste, deserunt et necessitatibus!\\
-                  </div>
-                </div>
-    
-              </div>
-
-          </div>
-        </div>
-      </div>
-
-    <div class="footer"></div>
+  <div id="drop-area">
+    <form class="my-form">
+      <p>Select file or drag and drop it on the are</p>
+      <input type="file" id="file">
+      <label class="button" for="fileElem">Select file</label>
+    </form>
+    <div class="gallery" id="gallery"></div>
   </div>
 
 </body>
