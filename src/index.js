@@ -1,1 +1,1 @@
-console.log('Hello native js!!!')
+// Welcome to master
