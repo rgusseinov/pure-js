@@ -1,23 +1,19 @@
-
-
-function upload(selector, options){
-
+function upload(selector, options) {
   const file = document.querySelector(selector);
-  file.style.display = 'none';
+  file.style.display = "none";
 
   const openButton = document.querySelector("label");
 
   const dropArea = document.querySelector("#drop-area");
   const gallery = document.querySelector(".gallery");
 
-  if (options.multi){
+  if (options.multi) {
     file.setAttribute("multiple", true);
   }
 
-  if (options.accept){
+  if (options.accept) {
     file.setAttribute("accept", options.accept.join(","));
   }
-
 
   // 1. Drag and Drop handlers
   const preventDefaults = (evt) => {
@@ -25,67 +21,69 @@ function upload(selector, options){
     evt.stopPropagation();
   };
 
+  const handledDragStart = (e) => {
+    e.preventDefault();
+    const source = e;
+    console.log(source);
+  };
+
+  dropArea.addEventListener("dragstart", handledDragStart);
+
   const addHightlight = () => {
-    dropArea.classList.add('highlight');
-  }
+    dropArea.classList.add("highlight");
+  };
 
   const removeHightlight = () => {
-    dropArea.classList.remove('highlight');
-  }
+    dropArea.classList.remove("highlight");
+  };
 
-  ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventType => {
+  ["dragenter", "dragover", "dragleave", "drop"].forEach((eventType) => {
     dropArea.addEventListener(eventType, preventDefaults);
   });
 
-
   // highlight drop area
-  ['dragenter', 'dragover'].forEach(eventType => {
+  ["dragenter", "dragover"].forEach((eventType) => {
     dropArea.addEventListener(eventType, addHightlight);
   });
 
-  ['dragleave', 'drop'].forEach(eventType => {
+  ["dragleave", "drop"].forEach((eventType) => {
     dropArea.addEventListener(eventType, removeHightlight);
-  })
+  });
 
   dropArea.addEventListener("drop", handleDrop, false);
 
-  function handleDrop(evt){
-    const {files} = evt.dataTransfer;
+  function handleDrop(evt) {
+    const { files } = evt.dataTransfer;
     renderFiles(files);
   }
-
 
   // 2. Normal select areas
   const handleSelectFile = () => file.click();
   const handleSelectFileChange = (evt) => {
-    const {files} = evt.target;
+    const { files } = evt.target;
     renderFiles(files);
-  }
+  };
 
-
-  
   const renderFiles = (files) => {
-    Array.from(files).forEach(file => {
+    Array.from(files).forEach((file) => {
       const reader = new FileReader();
       reader.readAsDataURL(file);
 
-      reader.onload = function(e){
+      reader.onload = function (e) {
         const src = e.target.result;
         preparePreview(src);
-      }      
-    })
-  }
+      };
+    });
+  };
 
   const preparePreview = (src) => {
     const img = document.createElement("img");
-    img.src = src;        
+    img.src = src;
     gallery.appendChild(img);
-  }
-  
-  openButton.addEventListener("click", handleSelectFile)
-  file.addEventListener("change", handleSelectFileChange)
+  };
 
+  openButton.addEventListener("click", handleSelectFile);
+  file.addEventListener("change", handleSelectFileChange);
 }
-
 
 export default upload;
