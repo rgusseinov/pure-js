@@ -3,8 +3,7 @@ export default class Validator {
     this.stringValidTypes = ["", null, undefined];
     this.validTypes = { string: this.stringValidTypes };
     this.activeTypes = this.validTypes[type];
-    this.isRequired = false;
-    this.value = null;
+    this.options = {required: false, contains: null, minLength: null};
   }
 
   string() {
@@ -12,36 +11,59 @@ export default class Validator {
   }
 
   required() {
-    this.isRequired = true;
+    this.options.required = true;
   }
 
-  isValid(value) {
-    if (!this.isRequired) {
-      console.log(this.activeTypes.includes(value));
+  isValid(value = "") {
+    if (this.options.required) {
+      if (!value) return false;
+      if (this.options.contains) {
+        return value.includes(this.options.contains);
+      }
+     
+      return Boolean(value);
     } else {
-      console.log(!this.activeTypes.includes(value) && value.length > 0);
+      if (this.options.contains){
+        if (!value) return false;
+        return value.includes(this.options.contains);
+      }
     }
+    return (this.activeTypes.includes(value) || !value != undefined);
   }
   contains(value) {
-    this.value = value;
+    this.options.contains = value;
+    return this;
+  }
+  minLength(value){
+    if (!value) return false;
+    this.options.minLength = value.length;
     return this;
   }
 }
 
 const v = new Validator();
 const schema = v.string();
-schema.isValid(); // true
-schema.isValid(null); // true
-schema.isValid(undefined); // true
+console.log(schema.minLength(10)); // true
+
+
+/* console.log(schema.isValid("fghfgh")); // true
+console.log(schema.isValid()); // true
+console.log(schema.isValid(null)); // true
+console.log(schema.isValid(undefined)); // true
+
 
 schema.required();
 
-console.log("-------");
-schema.isValid("what does the fox say"); // true
-schema.isValid("hexlet"); // true
-schema.isValid(null); // false
-schema.isValid(""); // false
+console.log("---Required----");
+console.log(schema.isValid("what does the fox say")); // true
+console.log(schema.isValid("hexlet")); // true
+console.log(schema.isValid(null)); // false
+console.log(schema.isValid("")); // false
 
-console.log("-------");
+
+console.log("---Contains----");
 console.log(schema.contains("what").isValid("what does the fox say")); // true;
-// console.log(schema.contains("what")); // true;
+console.log(schema.contains('whatthe').isValid('what does the fox say')); // false;
+console.log(schema.isValid("what does the fox say")); // false */
+ 
+
