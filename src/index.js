@@ -28,8 +28,21 @@ console.log(schema.contains("whatthe").isValid("what does the fox say")); // fal
 console.log(schema.isValid("what does the fox say")); // false */
 
 console.log("---Number----");
-/* const schema2 = v.number();
+const schema2 = v.number();
 console.log(schema2.isValid(123)); // true
 console.log(schema2.isValid("hello")); // false
- */
-// console.log(!isNaN("10"));
+console.log(schema2.isValid(null)); // true
+
+console.log("---required----");
+schema2.required();
+console.log(schema2.isValid(null)); // false
+console.log(schema2.isValid(7)); // true
+
+console.log("---positive----");
+console.log(schema2.positive().isValid(112)); // true
+
+console.log("---range----");
+schema2.range(-5, 5);
+console.log(schema2.isValid(6));
+
+// console.log(schema2);
