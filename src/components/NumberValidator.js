@@ -15,17 +15,3 @@ export default class NumberValidator extends BaseValidator {
     return this.addRule((value) => value >= from && value <= to);
   }
 }
-/*
-
-  {
-    from: 0,
-    to: 5
-  }
-
-  if (value >= from && value <= to)
-
-*/
-
-/* required – любое число включая ноль
-positive – положительное число
-range – диапазон в который должны попадать числа включая границы */

@@ -1,6 +1,11 @@
 export default class BaseValidator {
   constructor() {
     this.rules = [];
+    this.shape = {};
+  }
+  shape(data){
+    this.shape = data;
+    return this;
   }
   addRule(rule) {
     this.rules.push(rule);

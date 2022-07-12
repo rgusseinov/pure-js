@@ -1,6 +1,42 @@
 import Validator from "./components/Validator";
 
+
 const v = new Validator();
+const schema = v.object();
+
+// Позволяет описывать валидацию для свойств объекта
+/* schema.shape({
+  name: v.string().required(),
+  age: v.number().positive(),
+}); */
+
+// schema.shape({a: 10});
+schema.myShape({
+  name: v.string().required(),
+  age: v.number().positive(),
+});
+
+schema.isValid({ name: 'kolya', age: 100 }); // true
+
+// console.log(schema);
+
+/*
+console.log(schema.isValid({ name: 'kolya', age: 100 })); // true
+console.log(schema.isValid({ name: 'maya', age: null })); // true
+console.log(schema.isValid({ name: '', age: null })); // false
+console.log(schema.isValid({ name: 'ada', age: -5 })); // false
+ */
+
+/* const schema = v.array();
+console.log(schema.isValid(null)); // true
+
+schema.required();
+schema.sizeOf(2);
+console.log(schema.isValid([1, 2, 3]));
+ */
+
+
+// const v = new Validator();
 /* const schema = v.string();
 
 console.log(schema.isValid(123)); // false
@@ -27,7 +63,7 @@ console.log(schema.contains("what").isValid("what does the fox say")); // true;
 console.log(schema.contains("whatthe").isValid("what does the fox say")); // false;
 console.log(schema.isValid("what does the fox say")); // false */
 
-console.log("---Number----");
+/* console.log("---Number----");
 const schema2 = v.number();
 console.log(schema2.isValid(123)); // true
 console.log(schema2.isValid("hello")); // false
@@ -44,5 +80,6 @@ console.log(schema2.positive().isValid(112)); // true
 console.log("---range----");
 schema2.range(-5, 5);
 console.log(schema2.isValid(6));
-
+ */
 // console.log(schema2);
+
