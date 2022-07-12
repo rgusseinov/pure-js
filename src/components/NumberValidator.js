@@ -9,7 +9,7 @@ export default class NumberValidator extends BaseValidator {
     return this.addRule((value) => Number.isInteger(value));
   }
   positive() {
-    return this.addRule((value) => value > 0);
+    return this.addRule((value) => value > 0 || typeof value === "object");
   }
   range(from, to) {
     return this.addRule((value) => value >= from && value <= to);
